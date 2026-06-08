@@ -1,0 +1,14 @@
+.dialog-container {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form {
+  display: grid;
+}
+
+mat-form-field {
+  width: 30rem;
+}

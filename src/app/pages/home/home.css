@@ -1,0 +1,31 @@
+/* dashboard.component.css */
+:host {
+/* Toolbar personalizada com azure */
+  --mat-toolbar-container-background-color: var(--mat-sys-primary);
+  --mat-toolbar-container-text-color: var(--mat-sys-on-primary);
+}
+
+.spacer {
+  width: 3rem;
+}
+
+.toolbar-link {
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  margin-left: 1rem;
+  color: var(--mat-sys-on-primary);
+  color: var(--mat-sys-on-primary);
+  transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.toolbar-link:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Mais alinhado com Material Design */
+}
+
+.toolbar-link.active {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-bottom: 2px solid var(--mat-sys-on-primary);
+}
