@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "deploy": "ng build --configuration production --base-href 'https://WalneiOliveira.github.io/simple-blog/' && npx angular-cli-ghpages --dir=dist/simple-blog-base/browser",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
