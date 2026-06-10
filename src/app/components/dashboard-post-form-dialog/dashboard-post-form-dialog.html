@@ -1,33 +1,35 @@
 <div class="dialog-container">
   <h2>Nova Postagem</h2>
   <mat-dialog-content>
-    <form #postForm="ngForm" (ngSubmit)="onSubmit(postForm)">
+    <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
       <mat-form-field>
         <mat-label>Autor</mat-label>
-        <input matInput name="author" ngModel required />
+        <input matInput name="author" formControlName="author" />
         <mat-error>O autor da postagem é obrigatório</mat-error>
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Título</mat-label>
-        <input matInput name="title" ngModel required />
+        <input matInput name="title" formControlName="title" />
         <mat-error>O título da postagem é obrigatório!</mat-error>
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Data</mat-label>
-        <input matInput name="date" ngModel required />
+        <input [matDatepicker]="picker" matInput name="date" formControlName="date" />
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
         <mat-error>A data da postagem é obrigatória!</mat-error>
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Conteúdo</mat-label>
-        <textarea matInput rows="5" name="content" ngModel required></textarea>
+        <textarea matInput rows="5" name="content" formControlName="content"></textarea>
         <mat-error>O texto da postagem é obrigatório!</mat-error>
       </mat-form-field>
 
       <!-- ✅ CORRETO - Botão só habilita quando formulário for válido -->
-      <button mat-flat-button [disabled]="postForm.invalid">Salvar</button>
+      <button mat-flat-button [disabled]="!postForm.valid">Salvar</button>
     </form>
   </mat-dialog-content>
   <mat-dialog-actions></mat-dialog-actions>

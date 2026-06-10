@@ -1,25 +1,45 @@
+import { Dialog, DialogRef } from '@angular/cdk/dialog';
 import { Component } from '@angular/core';
-import { FormsModule, NgForm } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 
 import { MatButtonModule } from '@angular/material/button';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-dashboard-post-form-dialog',
-  imports: [MatDialogModule, MatFormFieldModule, MatInputModule, MatButtonModule, FormsModule],
+  imports: [
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatDatepickerModule,
+  ],
   templateUrl: './dashboard-post-form-dialog.html',
   styleUrl: './dashboard-post-form-dialog.css',
 })
 export class DashboardPostFormDialog {
-  onSubmit(postForm: NgForm) {
-    const author = postForm.form.value.author;
-    const title = postForm.form.value.title;
-    const date = postForm.form.value.date;
-    const content = postForm.form.value.content;
+  postForm = new FormGroup({
+    author: new FormControl('', Validators.required),
+    title: new FormControl('', Validators.required),
+    date: new FormControl('', Validators.required),
+    content: new FormControl('', Validators.required),
+  });
 
-    console.log(`[autor: ${author}], [título: ${title}], [data: ${date}], [texto: ${content}]`);
+  constructor(private dialogRef: DialogRef<DashboardPostFormDialog>) {}
+
+  onSubmit() {
+    console.log(this.postForm.value);
+    this.dialogRef.close()
   }
 }

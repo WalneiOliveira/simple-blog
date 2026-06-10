@@ -1,0 +1,11 @@
+{
+  "posts": [
+    {
+      "id": "id_teste",
+      "author": "teste_autor",
+      "title": "teste_titulo",
+      "date": "teste_date",
+      "content": "teste_content"
+    }
+  ]
+}
